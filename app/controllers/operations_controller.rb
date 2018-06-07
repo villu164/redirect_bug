@@ -25,15 +25,10 @@ class OperationsController < ApplicationController
   # POST /operations.json
   def create
     @operation = Operation.new(operation_params)
-
-    respond_to do |format|
-      if @operation.save
-        format.html { redirect_to @operation, notice: 'Operation was successfully created.' }
-        format.json { render :show, status: :created, location: @operation }
-      else
-        format.html { render :new }
-        format.json { render json: @operation.errors, status: :unprocessable_entity }
-      end
+    if @operation.save
+      redirect_to @operation
+    else
+      render 'new'
     end
   end
 
