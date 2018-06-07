@@ -27,6 +27,7 @@ class OperationsController < ApplicationController
     @operation = Operation.new(operation_params)
     if @operation.save
       redirect_to @operation
+      redirect_to @operation
     else
       render 'new'
     end
